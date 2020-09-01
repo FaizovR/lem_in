@@ -13,18 +13,19 @@ int		bfs(t_list *graph, t_data_dinic *data, int v_size)
 	end = 1;
 	while (head < v_size)
 	{
-		u = queue[head++];
+		u = data->queue_stack[head++];
 		j = 0;
-		while (j < graph[u].ed_num)
+		while (j < get_room_from_id(graph, u)->edges_number)
 		{
-			v = graph[u].edges[j++];
-			if (distance[v] == 0 && v != 0)
+			v = get_room_from_id(get_room_from_id(graph, u)->edges, j)->id;
+			j++;
+			if (data->distance[v] == 0 && v != 0)
 			{
-				distance[v] = distance[u] + 1;
-				queue[end] = v;
+				data->distance[v] = data->distance[u] + 1;
+				data->queue_stack[end] = v;
 				end++;
 			}
 		}
 	}
-	return (distance[count_v - 1]);
+	return (data->distance[v_size - 1]);
 }
