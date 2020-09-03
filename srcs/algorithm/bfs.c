@@ -1,7 +1,6 @@
 #include "lem_in.h"
 
-int		bfs(t_list *graph, t_data_dinic *data, int v_size)
-{
+int bfs(t_list *graph, t_data *data, int v_size) {
 	int j;
 	int v;
 	int u;
@@ -17,7 +16,7 @@ int		bfs(t_list *graph, t_data_dinic *data, int v_size)
 		j = 0;
 		while (j < get_room_from_id(graph, u)->edges_number)
 		{
-			v = get_room_from_id(get_room_from_id(graph, u)->edges, j)->id;
+			v = *(int *)vector_get(get_room_from_id(graph, u)->edges, j);
 			j++;
 			if (data->distance[v] == 0 && v != 0)
 			{
