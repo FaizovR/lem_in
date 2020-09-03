@@ -10,6 +10,6 @@ t_room *create_room(char *name, int id)
 	new_room->name = ft_strdup(name);
 	new_room->edges_number = 0;
 	new_room->id = id;
-	new_room->edges = NULL;
+	vector_init(&new_room->edges);
 	return (new_room);
 }

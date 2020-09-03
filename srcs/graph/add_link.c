@@ -1,19 +1,5 @@
 #include "lem_in.h"
 
-static t_room	*get_room_from_name(t_list *rooms, char *name)
-{
-	t_room	*room;
-
-	while (rooms != NULL)
-	{
-		room = (t_room *)rooms->content;
-		if (ft_strequ(name, room->name))
-			return (room);
-		rooms = rooms->next;
-	}
-	return (NULL);
-}
-
 /*static void		handle_link(t_list *rooms, char *line)
 {
 	t_list	*tmp;
@@ -41,7 +27,6 @@ static t_room	*get_room_from_name(t_list *rooms, char *name)
 
 void	add_link(t_list *graph, char *s, char *t)
 {
-	t_list		*tmp;
 	t_room		*room1;
 	t_room		*room2;
 
@@ -49,14 +34,8 @@ void	add_link(t_list *graph, char *s, char *t)
 	room2 = get_room_from_name(graph, t);
 	if (!room1 || !room2)
 		print_error(7);
-	tmp = ft_lstnew(room2, sizeof(t_room));
-	if (tmp == NULL)
-		print_error(1);
-	room1->edges++;
-	ft_lstadd(&room1->edges, tmp);
-	tmp = ft_lstnew(room1, sizeof(t_room));
-	if (tmp == NULL)
-		print_error(1);
-	room2->edges++;
-	ft_lstadd(&room2->edges, tmp);
+	room1->edges_number++;
+	room2->edges_number++;
+	room1->edges->push_back(room1->edges, (void *)&room2->id);
+	room2->edges->push_back(room2->edges, (void *)&room1->id);
 }
