@@ -29,7 +29,11 @@ SRCS=ft_atoi.c ft_bzero.c ft_isalnum.c \
 	 ft_lstmap.c ft_lstprint.c ft_lstpush_back.c ft_lstpop.c \
 	 ft_lstremove_if.c ft_delcontent.c \
 	 get_next_line.c ft_itoa_base.c ft_pow.c ft_putwchar.c ft_putwchar_fd.c \
-	 ft_putwstr.c ft_putwstr_fd.c ft_ltoa_base.c ft_ltoa.c ft_ultoa.c
+	 ft_putwstr.c ft_putwstr_fd.c ft_ltoa_base.c ft_ltoa.c ft_ultoa.c \
+	 char.c flag_handler_utilities.c float.c ft_print_string.c ft_printf_main.c integer.c output_utilities.c \
+	type_handler_utilities.c pointers.c mod_handler_utilities.c percent.c wchar.c hex.c octal.c unsigned.c \
+	hex_up.c binary.c float.c float2.c float_rounding.c handle_flags.c handle_float.c long_arithm.c \
+	print_float.c
 
 OBJECTS = $(SRCS:%.c=%.o)
 

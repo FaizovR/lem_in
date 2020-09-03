@@ -21,14 +21,12 @@ static void		free_data(t_data *data)
 	free(data->queue_stack);
 }
 
-t_path *dinic(t_list *graph, int v_size, int t) {
+t_list *dinic(t_list *graph, int v_size, int t) {
 	t_data	data;
 	t_list			*paths;
-	t_path			*old_paths;
 	int				length;
 
 	paths = NULL;
-	old_paths = NULL;
 	init_data(&data, v_size, t);
 	while (bfs(graph, &data, v_size))
 	{
@@ -36,12 +34,12 @@ t_path *dinic(t_list *graph, int v_size, int t) {
 		while ((length = find_path(0, graph, data)))
 		{
 			printf("%d\n", length);
-			ft_lstadd(&paths, ft_lstnew(create_path(set_path(length, data.queue_stack, graph, t), length), sizeof(t_path)));
+			ft_lstadd(&paths, ft_lstnew(create_path(set_path(length, data.queue_stack, graph, t), length), sizeof(t_list)));
 			ft_memset(data.queue_stack, 0, v_size * sizeof(int));
 		}
 		ft_memset(data.distance, 0, v_size * sizeof(int));
 		ft_memset(data.visited, 0, v_size);
 	}
 	free_data(&data);
-	return (old_paths);
+	return (paths);
 }

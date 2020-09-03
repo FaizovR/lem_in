@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include "get_next_line.h"
 # include <unistd.h>
+# include "ft_printf_main.h"
 
 # define FT_LONG_MAX 9223372036854775807
 
