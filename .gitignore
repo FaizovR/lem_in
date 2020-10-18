@@ -1,2 +1,25 @@
-.idea
-cmake-build-debug
+# object files, dependency files, libraries, binaries
+obj/
+*.o
+*.d
+*.a
+*.so
+*.dylib
+*.out
+lem-in
+
+# CLion
+.idea/
+cmake-build-debug/
+
+# macOS
+.DS_Store
+
+# valgrind
+*.dSYM/
+
+# project maps and output
+maps/
+map
+output
+out

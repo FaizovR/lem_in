@@ -1,40 +1,43 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    CMakeLists.txt                                     :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/09/01 12:32:40 by nalysann          #+#    #+#              #
+#    Updated: 2020/09/01 12:32:42 by nalysann         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 cmake_minimum_required(VERSION 3.17)
-project(lem_in)
+project(lem-in C)
 
-add_compile_options(-Wall -Wextra -Werror -g)
-set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_FLAGS "-Wall -Wextra -Werror -O2 -march=native -pipe")
 
-include_directories(
-        includes
-        libft/
-)
+include_directories(inc)
+include_directories(libft/inc)
 
-link_directories(lem_in
-        libft)
+add_subdirectory(libft)
 
-add_executable(lem_in
-        srcs/lem_in.c
-        srcs/algorithm/dinic.c
-        srcs/algorithm/bfs.c
-        srcs/algorithm/find_path.c
-        srcs/algorithm/path.c
-        srcs/graph/create_room.c
-        srcs/graph/add_link.c
-        srcs/graph/get_room.c
-        srcs/graph/delete_vertex.c
-        srcs/ft_vector/vector_free.c
-        srcs/ft_vector/vector_get.c
-        srcs/ft_vector/vector_init.c
-        srcs/ft_vector/vector_pop_back.c
-        srcs/ft_vector/vector_push_back.c
-        srcs/ft_vector/vector_resize.c
-        srcs/ft_vector/vector_set.c
-        srcs/ft_vector/vector_erase.c
-        srcs/ft_vector/vector_erase_if.c
-        srcs/utils/stack.c
-        srcs/utils/handle_error.c
-        srcs/utils/print_graph.c srcs/utils/ft_lstrev.c)
+add_executable(lem-in
+        inc/free.h
+        inc/parse.h
+        inc/path.h
+        inc/room.h
+        inc/solve.h
+        inc/utils.h
+        src/free.c
+        src/lem_in.c
+        src/parse.c
+        src/parse_ants.c
+        src/parse_links.c
+        src/parse_rooms.c
+        src/paths_get.c
+        src/paths_print.c
+        src/paths_sort.c
+        src/solve.c
+        src/utils.c)
 
-target_link_libraries(lem_in
-        "ft"
-        )
+target_link_libraries(lem-in ft)
